@@ -1,36 +1,137 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <Section id="main-box">
-        <nav>
+    <title>STOCK RUSH</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <section id="main-box">
+        <nav>
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+            <div class="dot3"></div>
         </nav>
-    </Section>
-    
-    
+
+
+        <div class="sinav"></div>
+        <div class="chart-box">
+            <canvas id="Chart"></canvas>
+        </div>
+        <div class="trade-box">
+            <div class="wallet-box">
+                Wallet: $<span id="wallet"><text>10000</text></span>
+            </div>
+
+            <div class="owned-box">
+                Shares: <span id="shares">0</span>
+            </div>
+
+            <input id="qty" type="input" placeholder="Stock amount" />
+
+            <button onclick="buy()">BUY</button>
+            <button onclick="sell()">SELL</button>
+
+            <div class="networth-box">
+                Net Worth: $<span id="networth">10000</span>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+
+        let wallet = 10000
+        let shares = 0
+        let lastClose = 100
+
+        window.onload = function () {
+
+            const canvas = document.getElementById("Chart")
+
+            let candles = []
+
+            let chart = new Chart(canvas, {
+                type: 'candlestick',
+                data: {
+                    datasets: [{
+                        data: candles,
+                        barThickness: 12,
+                        maxBarThickness: 18,
+                    }]
+                },
+                options: {
+                    animation: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { type: 'time' }
+                    }
+                }
+            })
+
+            updateUI()
+
+            function updateMarket() {
+                chart.update()
+                updateUI()
+                let open = lastClose
+                let high = open + Math.random() * 3
+                let low = open - Math.random() * 3
+                let close = low + Math.random() * (high - low)
+
+                lastClose = close
+
+                candles.push({
+                    x: new Date(),
+                    o: open,
+                    h: high,
+                    l: low,
+                    c: close
+                })
+
+                if (candles.length > 50) {
+                    candles.shift()
+                }
+
+                chart.update()
+
+            }
+
+            setInterval(updateMarket, 1500)
+
+        }
+        function sell(){
+              let qty = Number(document.getElementById("qty").value)
+
+    if(qty <= 0){
+        return
+    }
+    if (qty>shares){
+        alert("Not enough shares")
+        return   
+     }
+    let value = qty * lastClose
+    wallet += value
+    shares -= qty
+
+    updateUI()
+        }
+
+    </script>
+    <script defer src="app.js" > </script>
 </body>
-<style>
-    body{
-    background: #252525;
-    }
-    #main-box{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: black;
-        height: 95vh;
-        width: 90%;
-        border-radius: 10px;
-        position: relative;
-        margin-left: 5%;
-        margin-top: 1%;
-    }
-</style>
+
 </html>
