@@ -25,12 +25,16 @@
             <div class="dot2"></div>
             <div class="dot3"></div>
         </nav>
+        <div id="price-display">$100</div>
 
 
         <div class="sinav"></div>
         <div class="chart-box">
             <canvas id="Chart"></canvas>
         </div>
+        <div id="cost">
+                <h2 id = "c1"></h2>
+            </div>
         <div class="trade-box">
             <div class="wallet-box">
                 Wallet: $<span id="wallet"><text>10000</text></span>
@@ -40,13 +44,16 @@
                 Shares: <span id="shares">0</span>
             </div>
 
-            <input id="qty" type="input" placeholder="Stock amount" />
-
+            <input id="qty" type="number" placeholder="Stock amount" style="z-index: 1000000000000000000000000000000;">
             <button onclick="buy()">BUY</button>
             <button onclick="sell()">SELL</button>
 
             <div class="networth-box">
                 Net Worth: $<span id="networth">10000</span>
+            </div>
+
+            <div id="pl-box">
+                Profit/Loss: $<span id="pl">-</span>
             </div>
         </div>
 
@@ -55,6 +62,7 @@
     <script>
 
         let wallet = 10000
+        let prevnet = 10000
         let shares = 0
         let lastClose = 100
 
@@ -82,10 +90,24 @@
                 }
             })
 
-            updateUI()
+            const priceDisplay = document.getElementById("price-display")
+            function updatePriceDisplay() {
+                const shownPrice = Math.floor(lastClose)
+
+                priceDisplay.innerText = "$" + shownPrice
+
+                if (shownPrice < 100) {
+                    priceDisplay.style.color = "#ff5f57"
+                } else if (shownPrice === 100) {
+                    priceDisplay.style.color = "#febc2e"
+                } else {
+                    priceDisplay.style.color = "#28c840"
+                }
+            }
 
             function updateMarket() {
                 chart.update()
+                
                 updateUI()
                 let open = lastClose
                 let high = open + Math.random() * 3
@@ -93,6 +115,7 @@
                 let close = low + Math.random() * (high - low)
 
                 lastClose = close
+                updatePriceDisplay()
 
                 candles.push({
                     x: new Date(),
@@ -107,12 +130,16 @@
                 }
 
                 chart.update()
+               
+                
 
             }
 
             setInterval(updateMarket, 1500)
-
+            updatePriceDisplay()
+         
         }
+
         function sell(){
               let qty = Number(document.getElementById("qty").value)
 
@@ -127,8 +154,16 @@
     wallet += value
     shares -= qty
 
+    if (shares === 0) {
+        avgPrice = 0
+    }
+
+    animateSell(value, true)
+
     updateUI()
         }
+
+       
 
     </script>
     <script defer src="app.js" > </script>

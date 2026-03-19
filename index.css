@@ -177,3 +177,73 @@ button:hover{
     margin-left: 8%;
     margin-left: 26%;
 }
+#price-display{
+
+    position: absolute;
+    left: 85%;
+    top: 10%;
+    color: #00ff88;
+    font-size: 32px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 2px;
+    z-index: 100000;
+}
+#pl-box{
+    font-family: "Poppins";
+    font-size: 25px;
+    margin-top: 40px;
+    color: #ffffff;
+    font-weight: 700;
+    display: block;
+ 
+    margin-left:12%;
+
+}
+
+#cost{
+    position: absolute;
+    z-index: 10000000000000000000000000000000000000000000000000000;
+    left: 45%;
+    top:0;
+    color: #ff4d4d;
+    font-size: 26px;
+     font-family: "Poppins";
+    font-size: 25px;
+    margin-top: 40px;
+    font-weight: 700;
+    display: block;
+}
+
+#c1 {
+    margin: 0;
+    opacity: 0;
+}
+
+.cost-float-animate {
+    animation: slideFadeDown 1.2s ease-out forwards;
+}
+  @keyframes slideFadeDown {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+ }
+      100% {
+         opacity: 0;
+        transform: translateY(100px); 
+    }
+}
+
+.sell-float-animate {
+    animation: slideFadeUp 1.5s ease-out forwards;
+}
+  @keyframes slideFadeUp {
+      0% {
+        opacity: 1;
+        transform: translateY(400px);
+ }
+      100% {
+         opacity: 0;
+        transform: translateY(0px); 
+    }
+}
