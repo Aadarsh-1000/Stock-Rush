@@ -1,5 +1,5 @@
 let avgPrice = 0
-let achievementUnlocked = false
+const unlockedAchievements = {}
 
 function animateCost(amount, isBuy) {
     const costText = document.getElementById("c1")
@@ -65,6 +65,10 @@ function updateUI() {
 
     pORl()
     get100(net)
+    get250(net)
+    get500(net)
+    get1000(net)
+    get5000(net)
 
 
 }
@@ -86,21 +90,37 @@ function pORl() {
 pORl()
 
 function get100(net) {
-    const achievement = document.getElementById("ach1")
-    if (!achievement) {
+    showAchievement("ach1", net >= 10100)
+}
+
+function get250(net) {
+    showAchievement("ach2", net >= 10250)
+}
+
+function get500(net) {
+    showAchievement("ach3", net >= 10500)
+}
+
+function get1000(net) {
+    showAchievement("ach4", net >= 11000)
+}
+
+function get5000(net) {
+    showAchievement("ach15", net >= 15000)
+}
+
+function showAchievement(achievementId, shouldUnlock) {
+    const achievement = document.getElementById(achievementId)
+    if (!achievement || !shouldUnlock || unlockedAchievements[achievementId]) {
         return
     }
 
-    if (net >= 10100 && !achievementUnlocked) {
-        achievementUnlocked = true
-        achievement.style.display = "block"
-        achievement.classList.add("show")
+    unlockedAchievements[achievementId] = true
+    achievement.style.display = "block"
+    achievement.classList.add("show")
 
-        setTimeout(() => {
-            achievement.classList.remove("show")
-            achievement.style.display = "none"
-        }, 2600)
-    }
-
-
+    setTimeout(() => {
+        achievement.classList.remove("show")
+        achievement.style.display = "none"
+    }, 2600)
 }
