@@ -15,7 +15,7 @@ body {
     position: relative;
     margin-left: 5%;
     margin-top: 1%;
-    z-index: -1;
+    z-index: 0;
 }
 
 nav {
@@ -68,6 +68,8 @@ nav {
     height: 90%;
     border-radius: 10px;
     width: 15%;
+    justify-content: center;
+    align-items: center;
 }
 
 .chart-box {
@@ -246,4 +248,28 @@ button:hover{
          opacity: 0;
         transform: translateY(0px); 
     }
+}
+
+.sinav p {
+    display: block;
+    font-family: "Poppins";
+    color: rgba(255, 255, 255, 0.45);
+    margin: 14px 0 0;
+    padding: 6px 12px;
+    width: 70%;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    justify-self: center;
+    text-decoration: none;
+}
+
+.sinav p:hover,.sinav p.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateX(4px);
+}
+a{
+    text-decoration: none;
 }
