@@ -27,13 +27,16 @@
         </nav>
         <div id="price-display">$100</div>
 
-
+        <div id="ach1">
+    <h2>Stocks beginner</h2>
+    <p>You earn't 100$</p>
+</div>
         <div class="sinav">
             <a href="index.html"><p class="active">Antropic</p></a>
            <a href="stockone.html"><p>Tesla</p></a>
             <a href="stocktwo.html"><p>Apple</p></a>
             <a href="stockthree.html"><p>Google</p></a>
-            <a href="stockfour.html"><p>Deloitte</p></a>
+            <a href="stockfour.html"><p>SBI</p></a>
            <a href="stockfive.html"><p>Microsoft</p></a>
         </div>
         <div class="chart-box">
@@ -78,6 +81,7 @@
             const canvas = document.getElementById("Chart")
 
             let candles = []
+            let st = Date.now()
 
             function createCandle(xTime) {
                 let open = lastClose
@@ -103,9 +107,11 @@
                 }
             }
 
-            const now = Date.now()
+            const CANDLE_STEP_MS = 1000
+            let candleTime = Date.now() - (30 * CANDLE_STEP_MS)
             for (let i = 30; i > 0; i--) {
-                candles.push(createCandle(new Date(now - i * 60000)))
+                candleTime += CANDLE_STEP_MS
+                candles.push(createCandle(new Date(candleTime)))
             }
 
             let chart = new Chart(canvas, {
@@ -142,27 +148,23 @@
             }
 
             function updateMarket() {
-                const safeState = typeof marketState !== "undefined" ? marketState : "calm"
-                const safeTicks = typeof stateTicks !== "undefined" ? stateTicks : "-"
-                console.log("STATE:", safeState, "Ticks:", safeTicks)
                 updateUI()
-                const nextCandle = createCandle(new Date())
+                candleTime += CANDLE_STEP_MS
+                const nextCandle = createCandle(new Date(candleTime))
                 updatePriceDisplay()
 
                 candles.push(nextCandle)
 
-                if (candles.length > 50) {
+                if (candles.length > 30) {
                     candles.shift()
                 }
 
                 chart.update("none")
                
-                
-
             }
 
             updateMarket()
-            setInterval(updateMarket, 1500)
+            setInterval(updateMarket, 1000)
             updatePriceDisplay()
          
         }
