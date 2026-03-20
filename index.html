@@ -107,7 +107,7 @@
 
             function updateMarket() {
                 chart.update()
-                
+                console.log("STATE:", marketState, "Ticks:", stateTicks)
                 updateUI()
                 let open = lastClose
                 let high = open + Math.random() * 3

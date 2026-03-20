@@ -1,4 +1,26 @@
 let avgPrice = 0
+let marketState = "calm"
+let stateTicks = 0
+
+if(stateTicks <= 0){
+    r = Math.random()
+    if(r < 0.9){
+        let marketState = "crash"
+        let stateTicks = 10
+    }
+
+    else if(r= 0.10){
+        let marketState = "pump"
+        let stateTicks = 10
+    }
+
+    else{
+        marketState = "calm"
+        stateTicks = 8
+    }
+    console.log("NEW STATE:", marketState)
+}
+stateTicks--
 
 function animateCost(amount, isBuy) {
     const costText = document.getElementById("c1")
