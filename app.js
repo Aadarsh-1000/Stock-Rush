@@ -1,5 +1,55 @@
 let avgPrice = 0
 const unlockedAchievements = {}
+const REQUIRED_UNLOCKS = 4
+
+function getUnlockedCount() {
+    return Object.keys(unlockedAchievements).length
+}
+
+function canOpenOtherLevels() {
+    return getUnlockedCount() >= REQUIRED_UNLOCKS
+}
+
+function updateSidebarLinkLocks() {
+    const sideLinks = document.querySelectorAll(".sinav a")
+    const unlocked = canOpenOtherLevels()
+
+    sideLinks.forEach((link) => {
+        const href = link.getAttribute("href") || ""
+        const isCurrentLevel = href === "index.html" || href === "./index.html"
+
+        if (isCurrentLevel) {
+            link.classList.remove("locked-link")
+            return
+        }
+
+        if (unlocked) {
+            link.classList.remove("locked-link")
+        } else {
+            link.classList.add("locked-link")
+        }
+    })
+}
+
+function initSidebarLinkGuard() {
+    const sideLinks = document.querySelectorAll(".sinav a")
+
+    sideLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const href = link.getAttribute("href") || ""
+            const isCurrentLevel = href === "index.html" || href === "./index.html"
+
+            if (isCurrentLevel || canOpenOtherLevels()) {
+                return
+            }
+
+            event.preventDefault()
+            alert("You need to unlock 4/5 achievements to open other levels")
+        })
+    })
+
+    updateSidebarLinkLocks()
+}
 
 function animateCost(amount, isBuy) {
     const costText = document.getElementById("c1")
@@ -69,6 +119,7 @@ function updateUI() {
     get500(net)
     get1000(net)
     get5000(net)
+    updateSidebarLinkLocks()
 
 
 }
@@ -106,7 +157,7 @@ function get1000(net) {
 }
 
 function get5000(net) {
-    showAchievement("ach15", net >= 15000)
+    showAchievement("ach5", net >= 15000)
 }
 
 function showAchievement(achievementId, shouldUnlock) {
@@ -123,4 +174,8 @@ function showAchievement(achievementId, shouldUnlock) {
         achievement.classList.remove("show")
         achievement.style.display = "none"
     }, 2600)
+
+    updateSidebarLinkLocks()
 }
+
+initSidebarLinkGuard()

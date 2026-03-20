@@ -273,6 +273,11 @@ button:hover{
 a{
     text-decoration: none;
 }
+
+.sinav a.locked-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 #ach1{
     display: none;
     position: fixed;
@@ -280,6 +285,7 @@ a{
     color: rgb(255, 255, 255);
     justify-content: center;
     text-align: center;
+    pointer-events: none;
     font-family: poppins;
     border-radius: 10px;
     border: 2px solid #64748b;
@@ -322,6 +328,7 @@ a{
     text-align: center;
     font-family: poppins;
     border-radius: 10px;
+    pointer-events: none;
     border: 2px solid #166534;
     padding: 20px;
     background: linear-gradient(135deg,#4ade80,#16a34a);
@@ -360,6 +367,7 @@ a{
     color: rgb(255, 255, 255);
     justify-content: center;
     text-align: center;
+    pointer-events: none;
     font-family: poppins;
     border-radius: 10px;
     border: 2px solid #1e3a8a;
@@ -401,6 +409,7 @@ a{
     justify-content: center;
     text-align: center;
     font-family: poppins;
+    pointer-events: none;
     border-radius: 10px;
     border: 2px solid #4c1d95;
     padding: 20px;
@@ -433,12 +442,12 @@ a{
         transform: translateX(260px);
     }
 }
-.ach5 {
+#ach5 {
     position: relative;
     overflow: hidden;
 }
 
-.ach5::after{
+#ach5::after{
     content:"";
     position:absolute;
     top:-50%;
