@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <section id="main-box">
+    <section id="main-box">  
         <nav>
             <div class="dot1"></div>
             <div class="dot2"></div>
@@ -27,8 +27,39 @@
         </nav>
         <div id="price-display">$100</div>
 
+        <div id="ach1">
+    <h2>🏆 Rookie Trader</h2>
+    <p>You earn't 100$</p>
+</div>
+    <div id="ach2">
+    <h2>🏆 Risk Taker</h2>
+    <p>You earn't 250$</p>
+</div>
+    <div id="ach3">
+    <h2>🏆 Capital builder</h2>
+    <p>You earn't 500$</p>
+</div>
+    <div id="ach4">
+    <h2>🏆 Money Maniac</h2>
+    <p>You earn't 1000$</p>
+</div>
+  <div id="ach5">
+    <h2>🏆 Market Oracle</h2>
+    <p>You earn't 5000$</p>
 
-        <div class="sinav"></div>
+
+    
+    </div>
+
+
+        <div class="sinav">
+            <a href="index.html"><p class="active">SeedSpark Investments</p></a>
+           <a href="stockone.html"><p>TradeForge Ltd</p></a>
+            <a href="stocktwo.html"><p>IronTrend Capital</p></a>
+            <a href="stockthree.html"><p>Hyperion Finance</p></a>
+            <a href="stockfour.html"><p>EternalAlpha Group</p></a>
+           <a href="stockfive.html"><p>Phantom Market Makers</p></a>
+        </div>
         <div class="chart-box">
             <canvas id="Chart"></canvas>
         </div>
@@ -59,263 +90,7 @@
 
     </section>
 
-    <style>
-        body {
-    background: #252525;
-}
-
-#main-box {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    height: 95vh;
-    width: 90%;
-    border-radius: 10px;
-    position: relative;
-    margin-left: 5%;
-    margin-top: 1%;
-    z-index: -1;
-}
-
-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 99%;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    padding-left: 14px;
-    gap: 10px;
-    background-color: #1e1e1e;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.dot1 {
-    background-color: #ff5f57;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    display: block;
-}
-
-.dot2 {
-    background-color: #febc2e;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    display: block;
-}
-
-.dot3 {
-    background-color: #28c840;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    display: block;
-}
-
-.sinav {
-    width: 20%;
-    background-color: #1e1e1e;
-    z-index: 20;
-    position: absolute;
-    display: block;
-    left: 1%;
-    top: 8%;
-    height: 90%;
-    border-radius: 10px;
-    width: 15%;
-}
-
-.chart-box {
-    min-width: 60%;
-    background-color: #1e1e1e;
-    z-index: 20;
-    position: absolute;
-    display: block;
-    left: 17%;
-    top: 20%;
-    height: 78%;
-    border-radius: 10px;
-}
-
-.trade-box {
-    width: 21%;
-    background-color: #1e1e1e;
-    z-index: 20;
-    position: absolute;
-    display: block;
-    left: 78%;
-    top: 20%;
-    height: 78%;
-    border-radius: 10px;
-}
-
-.chart-box {
-    height: 78%;
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#display {
-    font-size: 32px;
-    font-weight: 700;
-    color: white;
-    gap: 0;
-}
-
-.wallet-box{
-    font-size: 22px;
-    font-family: "Poppins";
-    color: #e6edf3;
-    margin-bottom: 10px;
-    margin-left: 20%;
-    margin-top: 20%;
-}
-.owned-box{
-     font-family: "Poppins";
-    font-size: 20px;
-    color: #4fd1ff;
-    margin-bottom: 20px;
-    margin-left: 32%;
-}
-#qty{
-     font-size: 22px;
-      font-family: "Poppins";
-    width: 80%;
-    margin-left: 7%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #0f1115;
-    color: white;
-    font-size: 16px;
-    margin-bottom: 15px;
-    outline: none;
-}
-button{
-     font-size: 18px;
-      font-family: "Poppins";
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-    display: inline;
-    position: relative;
-    left: 24%;
-}
-
-button:nth-of-type(1){
-     font-size: 18px;
-    background: linear-gradient(135deg,#00ff88,#00c853);
-    color: black;
-}
-
-button:nth-of-type(2){
-    background: linear-gradient(135deg,#ff4d4d,#ff0033);
-    color: white;
-}
-
-button:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-}
-.networth-box{
-     font-family: "Poppins";
-    font-size: 25px;
-    margin-top: 30px;
-    color: #00ff88;
-    font-weight: 700;
-    display: block;
-    margin-left: 8%;
-    margin-left: 26%;
-}
-#price-display{
-
-    position: absolute;
-    left: 85%;
-    top: 10%;
-    color: #00ff88;
-    font-size: 32px;
-    font-weight: 600;
-    font-family: "Poppins", sans-serif;
-    letter-spacing: 2px;
-    z-index: 100000;
-}
-#pl-box{
-    font-family: "Poppins";
-    font-size: 25px;
-    margin-top: 40px;
-    color: #ffffff;
-    font-weight: 700;
-    display: block;
- 
-    margin-left:12%;
-
-}
-
-#cost{
-    position: absolute;
-    z-index: 10000000000000000000000000000000000000000000000000000;
-    left: 45%;
-    top:0;
-    color: #ff4d4d;
-    font-size: 26px;
-     font-family: "Poppins";
-    font-size: 25px;
-    margin-top: 40px;
-    font-weight: 700;
-    display: block;
-}
-
-#c1 {
-    margin: 0;
-    opacity: 0;
-}
-
-.cost-float-animate {
-    animation: slideFadeDown 1.2s ease-out forwards;
-}
-  @keyframes slideFadeDown {
-      0% {
-        opacity: 1;
-        transform: translateY(0);
- }
-      100% {
-         opacity: 0;
-        transform: translateY(100px); 
-    }
-}
-
-.sell-float-animate {
-    animation: slideFadeUp 1.5s ease-out forwards;
-}
-  @keyframes slideFadeUp {
-      0% {
-        opacity: 1;
-        transform: translateY(400px);
- }
-      100% {
-         opacity: 0;
-        transform: translateY(0px); 
-    }
-}
-    </style>
-
     <script>
-               
-let avgPrice = 0
-let marketState = "calm"
-let stateTicks = 0
 
         let wallet = 10000
         let prevnet = 10000
@@ -327,6 +102,38 @@ let stateTicks = 0
             const canvas = document.getElementById("Chart")
 
             let candles = []
+            let st = Date.now()
+
+            function createCandle(xTime) {
+                let open = lastClose
+                let high = open + Math.random() * 3
+                let low = open - Math.random() * 3
+
+                if (low < 1) {
+                    low = 1
+                }
+                if (high <= low) {
+                    high = low + 0.5
+                }
+
+                let close = low + Math.random() * (high - low)
+                lastClose = close
+
+                return {
+                    x: xTime,
+                    o: open,
+                    h: high,
+                    l: low,
+                    c: close
+                }
+            }
+
+            const CANDLE_STEP_MS = 1000
+            let candleTime = Date.now() - (30 * CANDLE_STEP_MS)
+            for (let i = 30; i > 0; i--) {
+                candleTime += CANDLE_STEP_MS
+                candles.push(createCandle(new Date(candleTime)))
+            }
 
             let chart = new Chart(canvas, {
                 type: 'candlestick',
@@ -362,36 +169,23 @@ let stateTicks = 0
             }
 
             function updateMarket() {
-                chart.update()
-                console.log("STATE:", marketState, "Ticks:", stateTicks)
                 updateUI()
-                let open = lastClose
-                let high = open + Math.random() * 3
-                let low = open - Math.random() * 3
-                let close = low + Math.random() * (high - low)
-
-                lastClose = close
+                candleTime += CANDLE_STEP_MS
+                const nextCandle = createCandle(new Date(candleTime))
                 updatePriceDisplay()
 
-                candles.push({
-                    x: new Date(),
-                    o: open,
-                    h: high,
-                    l: low,
-                    c: close
-                })
+                candles.push(nextCandle)
 
-                if (candles.length > 50) {
+                if (candles.length > 30) {
                     candles.shift()
                 }
 
-                chart.update()
+                chart.update("none")
                
-                
-
             }
 
-            setInterval(updateMarket, 1500)
+            updateMarket()
+            setInterval(updateMarket, 1000)
             updatePriceDisplay()
          
         }
@@ -419,110 +213,8 @@ let stateTicks = 0
     updateUI()
         }
 
+       
 
-if(stateTicks <= 0){
-    r = Math.random()
-    if(r < 0.9){
-        let marketState = "crash"
-        let stateTicks = 10
-    }
-
-    else if(r= 0.10){
-        let marketState = "pump"
-        let stateTicks = 10
-    }
-
-    else{
-        marketState = "calm"
-        stateTicks = 8
-    }
-    console.log("NEW STATE:", marketState)
-}
-stateTicks--
-
-function animateCost(amount, isBuy) {
-    const costText = document.getElementById("c1")
-    if (!costText) {
-        return
-    }
-    const sign = isBuy ? "-" : "+"
-    costText.innerText = `${sign}$${amount.toFixed(2)}`
-    costText.style.color = isBuy ? "#ff5f57" : "#28c840"
-    costText.classList.remove("cost-float-animate")
-    void costText.offsetWidth
-    costText.classList.add("cost-float-animate")
-}
-
-function animateSell(amount, isSell) {
-    const costText = document.getElementById("c1")
-    if (!costText) {
-        return
-    }
-    const sign = isSell ? "-" : "+"
-    costText.innerText = `+${amount.toFixed(2)}`
-    costText.style.color = "#28c840"
-    costText.classList.remove("sell-float-animate")
-    void costText.offsetWidth
-    costText.classList.add("sell-float-animate")
-}
-
-function buy() {
-
-
-
-
-    let qty = Number(document.getElementById("qty").value)
-
-    if (qty <= 0) {
-        alert("enter qty")
-        return
-    }
-    let cost = qty * lastClose
-
-    if (cost <= wallet) {
-        const totalSharesBefore = shares
-        wallet -= cost
-        shares += qty
-
-        avgPrice = ((totalSharesBefore * avgPrice) + (qty * lastClose)) / shares
-        animateCost(cost, true)
-
-    } else {
-        alert("Not enough wallet")
-    }
-
-
-    updateUI()
-
-}
-
-function updateUI() {
-    document.getElementById("wallet").innerText = wallet.toFixed(2)
-    document.getElementById("shares").innerText = shares
-
-    let net = wallet + (shares * lastClose)
-    document.getElementById("networth").innerText = net.toFixed(2)
-
-    pORl()
-
-
-}
-updateUI();
-function pORl() {
-    const pl = shares * (lastClose - avgPrice)
-    const plValue = document.getElementById("pl")
-
-    plValue.innerText = pl.toFixed(2)
-    if (pl > 0) {
-        plValue.style.color = "#28c840"
-    } else if (pl < 0) {
-        plValue.style.color = "#ff5f57"
-    } else {
-        plValue.style.color = "#febc2e"
-    }
-
-}
-pORl()
     </script>
     <script defer src="app.js" > </script>
 </body>
