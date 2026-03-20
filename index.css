@@ -275,6 +275,41 @@ a{
 }
 #ach1{
     display: none;
+    position: fixed;
     z-index: 6767676767676767000000000000000000000000000000000000000000000000000000000000000;
+    color: rgb(255, 255, 255);
+    justify-content: center;
+    text-align: center;
+    font-family: poppins;
+    border-radius: 10px;
+    border: 5px solid rgb(255, 183, 0);
+    padding: 20px;
+    background-color: #ffae00c0;
+    right: 100px;
+    top: 0;
+    opacity: 0;
+    transform: translateX(260px);
 
+}
+#ach1.show{
+    animation: achievementSlide 2.6s ease forwards;
+}
+
+@keyframes achievementSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(260px);
+    }
+    18% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    72% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(260px);
+    }
 }

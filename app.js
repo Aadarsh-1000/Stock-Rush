@@ -1,4 +1,5 @@
 let avgPrice = 0
+let achievementUnlocked = false
 
 function animateCost(amount, isBuy) {
     const costText = document.getElementById("c1")
@@ -90,11 +91,16 @@ function get100(net) {
         return
     }
 
-    if (net >= 10100) {
+    if (net >= 10100 && !achievementUnlocked) {
+        achievementUnlocked = true
         achievement.style.display = "block"
+        achievement.classList.add("show")
+
+        setTimeout(() => {
+            achievement.classList.remove("show")
+            achievement.style.display = "none"
+        }, 2600)
     }
 
 
 }
-
-get100()
