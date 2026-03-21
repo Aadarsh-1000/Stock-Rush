@@ -53,14 +53,17 @@
 
 
         <div class="sinav">
-            <a href="main.html">SeedSpark Investments</a>
+            <a href="index.html"><p class="active">SeedSpark Investments</p></a>
            <a href="stockone.html"><p>TradeForge Ltd</p></a>
             <a href="stocktwo.html"><p>IronTrend Capital</p></a>
             <a href="stockthree.html"><p>Hyperion Finance</p></a>
             <a href="stockfour.html"><p>EternalAlpha Group</p></a>
-           <a href="stockfive.html"><p class="active">Phantom Market Makers</p></a>
+           <a href="stockfive.html"><p>Phantom Market Makers</p></a>
            <p id="achievements-open" class="sinav-ach-btn">Achievements</p>
+       
+
         </div>
+
         <div id="achievements-panel" class="achievements-panel" aria-hidden="true">
             <div class="achievements-header">
                 <h3>Achievements</h3>
@@ -74,6 +77,7 @@
                 <li data-achievement="ach5"><span>Market Oracle</span><span class="ach-status">Locked</span></li>
             </ul>
         </div>
+
         <div class="chart-box">
             <canvas id="Chart"></canvas>
         </div>
@@ -120,8 +124,8 @@
 
             function createCandle(xTime) {
                 let open = lastClose
-                let high = open + Math.random() * 3
-                let low = open - Math.random() * 6
+                let high = open + Math.random() * 4
+                let low = open - Math.random() * 3
 
                 if (low < 1) {
                     low = 1

@@ -1,240 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STOCK RUSH</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap" rel="stylesheet">
-
+    <title>Stock-Rush</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="modulepreload" href="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    <link rel="preload" href="stock.glb" as="fetch" type="model/gltf-binary" crossorigin>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js" async></script>
 </head>
-
 <body>
-    <section id="main-box">  
+    <img class="img" src="gradient.png">
+    <div class="LayerBlur"></div>
+<div class="container">
+    <header>
+        <h1>Stock Rush</h1>
         <nav>
-            <div class="dot1"></div>
-            <div class="dot2"></div>
-            <div class="dot3"></div>
+            <a href="https://github.com/Aadarsh-1000/Stock-Rush">GitHub</a>
+            
+            <a href="index.html">Try Now</a>
         </nav>
-        <div id="price-display">$100</div>
 
-        <div id="ach1">
-    <h2>🏆 Rookie Trader</h2>
-    <p>You earn't 100$</p>
-</div>
-    <div id="ach2">
-    <h2>🏆 Risk Taker</h2>
-    <p>You earn't 250$</p>
-</div>
-    <div id="ach3">
-    <h2>🏆 Capital builder</h2>
-    <p>You earn't 500$</p>
-</div>
-    <div id="ach4">
-    <h2>🏆 Money Maniac</h2>
-    <p>You earn't 1000$</p>
-</div>
-  <div id="ach5">
-    <h2>🏆 Market Oracle</h2>
-    <p>You earn't 5000$</p>
-
-
-    
-    </div>
-
-
-        <div class="sinav">
-            <a href="index.html"><p class="active">SeedSpark Investments</p></a>
-           <a href="stockone.html"><p>TradeForge Ltd</p></a>
-            <a href="stocktwo.html"><p>IronTrend Capital</p></a>
-            <a href="stockthree.html"><p>Hyperion Finance</p></a>
-            <a href="stockfour.html"><p>EternalAlpha Group</p></a>
-           <a href="stockfive.html"><p>Phantom Market Makers</p></a>
-           <p id="achievements-open" class="sinav-ach-btn">Achievements</p>
+    </header>
+    <section>
+        <h2>
+            STOCK RUSH
+        </h2>
        
-
+        <p>Stock Rush is an interactive game that allows you to experience the thrill of trading with stcks for free with virtual money</p>
+        <div class="getstarted">
+            <a href="index.html"><button>
+                Get Started
+            </button></a>
         </div>
-
-        <div id="achievements-panel" class="achievements-panel" aria-hidden="true">
-            <div class="achievements-header">
-                <h3>Achievements</h3>
-                <button id="achievements-close" type="button" class="achievements-close">x</button>
-            </div>
-            <ul class="achievements-list">
-                <li data-achievement="ach1"><span>Rookie Trader</span><span class="ach-status">Locked</span></li>
-                <li data-achievement="ach2"><span>Risk Taker</span><span class="ach-status">Locked</span></li>
-                <li data-achievement="ach3"><span>Capital Builder</span><span class="ach-status">Locked</span></li>
-                <li data-achievement="ach4"><span>Money Maniac</span><span class="ach-status">Locked</span></li>
-                <li data-achievement="ach5"><span>Market Oracle</span><span class="ach-status">Locked</span></li>
-            </ul>
-        </div>
-
-        <div class="chart-box">
-            <canvas id="Chart"></canvas>
-        </div>
-        <div id="cost">
-                <h2 id = "c1"></h2>
-            </div>
-        <div class="trade-box">
-            <div class="wallet-box">
-                Wallet: $<span id="wallet"><text>10000</text></span>
-            </div>
-
-            <div class="owned-box">
-                Shares: <span id="shares">0</span>
-            </div>
-
-            <input id="qty" type="number" placeholder="Stock amount" style="z-index: 1000000000000000000000000000000;">
-            <button onclick="buy()">BUY</button>
-            <button onclick="sell()">SELL</button>
-
-            <div class="networth-box">
-                Net Worth: $<span id="networth">10000</span>
-            </div>
-
-            <div id="pl-box">
-                Profit/Loss: $<span id="pl">-</span>
-            </div>
-        </div>
-
+        <footer>
+            Made with ❤️ from @Icecreamsandwich
+        </footer>
     </section>
 
-    <script>
+    <section class="model-section">
+        <model-viewer
+            class="stock-model"
+            src="stock.glb"
+            alt="Stock 3D model"
+            camera-controls
+            auto-rotate
+            shadow-intensity="0.35"
+            exposure="1.05"
+            interaction-prompt="none"
+            loading="eager">
+        </model-viewer>
+    </section>
 
-        let wallet = 10000
-        let prevnet = 10000
-        let shares = 0
-        let lastClose = 100
-
-        window.onload = function () {
-
-            const canvas = document.getElementById("Chart")
-
-            let candles = []
-            let st = Date.now()
-
-            function createCandle(xTime) {
-                let open = lastClose
-                let high = open + Math.random() * 4
-                let low = open - Math.random() * 3
-
-                if (low < 1) {
-                    low = 1
-                }
-                if (high <= low) {
-                    high = low + 0.5
-                }
-
-                let close = low + Math.random() * (high - low)
-                lastClose = close
-
-                return {
-                    x: xTime,
-                    o: open,
-                    h: high,
-                    l: low,
-                    c: close
-                }
-            }
-
-            const CANDLE_STEP_MS = 1000
-            let candleTime = Date.now() - (30 * CANDLE_STEP_MS)
-            for (let i = 30; i > 0; i--) {
-                candleTime += CANDLE_STEP_MS
-                candles.push(createCandle(new Date(candleTime)))
-            }
-
-            let chart = new Chart(canvas, {
-                type: 'candlestick',
-                data: {
-                    datasets: [{
-                        data: candles,
-                        barThickness: 12,
-                        maxBarThickness: 18,
-                    }]
-                },
-                options: {
-                    animation: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { type: 'time' }
-                    }
-                }
-            })
-
-            const priceDisplay = document.getElementById("price-display")
-            function updatePriceDisplay() {
-                const shownPrice = Math.floor(lastClose)
-
-                priceDisplay.innerText = "$" + shownPrice
-
-                if (shownPrice < 100) {
-                    priceDisplay.style.color = "#ff5f57"
-                } else if (shownPrice === 100) {
-                    priceDisplay.style.color = "#febc2e"
-                } else {
-                    priceDisplay.style.color = "#28c840"
-                }
-            }
-
-            function updateMarket() {
-                updateUI()
-                candleTime += CANDLE_STEP_MS
-                const nextCandle = createCandle(new Date(candleTime))
-                updatePriceDisplay()
-
-                candles.push(nextCandle)
-
-                if (candles.length > 30) {
-                    candles.shift()
-                }
-
-                chart.update("none")
-               
-            }
-
-            updateMarket()
-            setInterval(updateMarket, 1000)
-            updatePriceDisplay()
-         
-        }
-
-        function sell(){
-              let qty = Number(document.getElementById("qty").value)
-
-    if(qty <= 0){
-        return
-    }
-    if (qty>shares){
-        alert("Not enough shares")
-        return   
-     }
-    let value = qty * lastClose
-    wallet += value
-    shares -= qty
-
-    if (shares === 0) {
-        avgPrice = 0
-    }
-
-    animateSell(value, true)
-
-    updateUI()
-        }
-
-       
-
-    </script>
-    <script defer src="app.js" > </script>
+</div>
 </body>
+<style>
+    button{
+        color: white;
+        padding: 20px;
+        border-radius: 20px;
+        background-color: rgb(0, 0, 0);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+        margin-top: 20%;
+        left: 16%;
+        position: absolute;
+        font-family: poppins;
+        cursor: pointer;
+    }
+    button:hover{
+        color: white;
+        border-radius: 20px;
+        background-color: rgb(0, 0, 0);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+        margin-top: 20%;
+        left: 16%;
+        position: absolute;
+        font-family: poppins;
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in;
+    }
+    footer{
+        position: absolute;
+        top: 95%;
+        left: 45%;
+    }
+   
+    p{
+        position: absolute;
+        margin-top: 12%;
+        left: 16%;
+        max-width: 500px;
+    }
+    h2{
+        position: absolute;
+        left: 16%;
+        top: 34%;
+    }
+    .model-section{
+        transform: translateX(45%);
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box ;
+        overflow: hidden;
+    }
+    body{
+        font-family: "Poppins";
+        line-height: 1.5;
+        background-color: black;
+        color: #e7e7e7;
+        min-height: 100vh;
+    }
+    .img{
+        opacity: 0.5;
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        z-index: -1;
+}
+.LayerBlur{
+    height: 0;
+    width: 30rem;
+    position: absolute;
+    top: 20%;
+    right: 0;
+    box-shadow: 0 0 700px 15px white;
+    rotate: -30deg;
+    z-index: -1;
+}
+.container{
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    position: relative;
+    overflow: hidden;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5rem;
+}
+header nav{
+    display: flex;
+    gap: 1.25rem;
+}
+header h1{
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 400;
+
+}
+nav{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-left: -5%;
+    z-index:999;
+    
+}
+nav a{
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+    
+}
+nav a:hover{
+    color: #cfc0c0;
+   
+}
+
+.model-section{
+    margin: 1.5rem auto 0;
+    width: min(1080px, 94vw);
+}
+
+.stock-model{
+    width: 100%;
+    height: min(72vh, 620px);
+    border: 0;
+    border-radius: 14px;
+    background: transparent;
+}
+
+@media (max-width: 900px){
+    header{
+        padding: 1rem 1.25rem;
+    }
+
+    nav{
+        margin-left: 0;
+        gap: 1.4rem;
+    }
+
+    .model-section{
+        margin-top: 1rem;
+    }
+
+    .stock-model{
+        height: min(62vh, 520px);
+    }
+}
+</style>
 
 </html>
