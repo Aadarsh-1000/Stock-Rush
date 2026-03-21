@@ -51,6 +51,47 @@ function initSidebarLinkGuard() {
     updateSidebarLinkLocks()
 }
 
+function updateAchievementsPanel() {
+    const panel = document.getElementById("achievements-panel")
+    if (!panel) {
+        return
+    }
+
+    const achievementRows = panel.querySelectorAll(".achievements-list li")
+    achievementRows.forEach((row) => {
+        const achievementId = row.getAttribute("data-achievement")
+        const status = row.querySelector(".ach-status")
+        const unlocked = Boolean(achievementId && unlockedAchievements[achievementId])
+
+        row.classList.toggle("unlocked", unlocked)
+        if (status) {
+            status.innerText = unlocked ? "Unlocked" : "Locked"
+        }
+    })
+}
+
+function initAchievementsPanel() {
+    const openButton = document.getElementById("achievements-open")
+    const closeButton = document.getElementById("achievements-close")
+    const panel = document.getElementById("achievements-panel")
+
+    if (!openButton || !closeButton || !panel) {
+        return
+    }
+
+    openButton.addEventListener("click", () => {
+        panel.classList.add("open")
+        panel.setAttribute("aria-hidden", "false")
+    })
+
+    closeButton.addEventListener("click", () => {
+        panel.classList.remove("open")
+        panel.setAttribute("aria-hidden", "true")
+    })
+
+    updateAchievementsPanel()
+}
+
 function animateCost(amount, isBuy) {
     const costText = document.getElementById("c1")
     if (!costText) {
@@ -120,6 +161,7 @@ function updateUI() {
     get1000(net)
     get5000(net)
     updateSidebarLinkLocks()
+    updateAchievementsPanel()
 
 
 }
@@ -176,6 +218,8 @@ function showAchievement(achievementId, shouldUnlock) {
     }, 2600)
 
     updateSidebarLinkLocks()
+    updateAchievementsPanel()
 }
 
 initSidebarLinkGuard()
+initAchievementsPanel()

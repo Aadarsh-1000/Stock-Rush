@@ -59,9 +59,25 @@
             <a href="stockthree.html"><p>Hyperion Finance</p></a>
             <a href="stockfour.html"><p>EternalAlpha Group</p></a>
            <a href="stockfive.html"><p>Phantom Market Makers</p></a>
-           <a href="ach.html"><p>Achievements</p></a>
+           <p id="achievements-open" class="sinav-ach-btn">Achievements</p>
+       
 
         </div>
+
+        <div id="achievements-panel" class="achievements-panel" aria-hidden="true">
+            <div class="achievements-header">
+                <h3>Achievements</h3>
+                <button id="achievements-close" type="button" class="achievements-close">x</button>
+            </div>
+            <ul class="achievements-list">
+                <li data-achievement="ach1"><span>Rookie Trader</span><span class="ach-status">Locked</span></li>
+                <li data-achievement="ach2"><span>Risk Taker</span><span class="ach-status">Locked</span></li>
+                <li data-achievement="ach3"><span>Capital Builder</span><span class="ach-status">Locked</span></li>
+                <li data-achievement="ach4"><span>Money Maniac</span><span class="ach-status">Locked</span></li>
+                <li data-achievement="ach5"><span>Market Oracle</span><span class="ach-status">Locked</span></li>
+            </ul>
+        </div>
+
         <div class="chart-box">
             <canvas id="Chart"></canvas>
         </div>
@@ -108,7 +124,7 @@
 
             function createCandle(xTime) {
                 let open = lastClose
-                let high = open + Math.random() * 5
+                let high = open + Math.random() * 4
                 let low = open - Math.random() * 3
 
                 if (low < 1) {
